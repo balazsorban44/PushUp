@@ -4,11 +4,13 @@ public class Sessions {
 
     private int _id,
                 _pushups;
-    private long _date;
+    private long _date,
+                 _duration;
 
-    Sessions(int _pushups, long _date) {
+    Sessions(int _pushups, long _date, long _duration) {
         this._pushups = _pushups;
         this._date = _date;
+        this._duration = _duration;
     }
 
     public int get_id() {
@@ -33,5 +35,13 @@ public class Sessions {
 
     public void set_date(long _date) {
         this._date = _date;
+    }
+
+    public long get_duration() {
+        return _duration;
+    }
+
+    public void set_duration(long _duration) {
+        this._duration = _duration;
     }
 }

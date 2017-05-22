@@ -6,8 +6,6 @@
     <string name="current_pushup">0</string>
     <string name="cancel_session">Cancel session</string>
     <string name="save_progress">Save progress</string>
-    <string name="delete_sessions">Delete sessions</string>
-    <string name="show_sessions">Show sessions</string>
     <string name="sessions">Sessions</string>
     <string name="some_text">Text 0:</string>
     <string name="my_text">Text 1:</string>

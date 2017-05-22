@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.Cursor;
 import android.content.Context;
 import android.content.ContentValues;
+import android.text.format.DateFormat;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,6 +18,10 @@ public class DBHandler extends SQLiteOpenHelper {
             COLUMN_ID = "_id",
             COLUMN_COUNT = "COUNT",
             COLUMN_DATE = "DATE";
+
+    public static String convertDate(String dateInMilliseconds,String dateFormat) {
+        return DateFormat.format(dateFormat, Long.parseLong(dateInMilliseconds)).toString();
+    }
 
     DBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
         super(context, DATABASE_NAME,null, DATABASE_VERSION);
@@ -69,7 +74,7 @@ public class DBHandler extends SQLiteOpenHelper {
                     dbString.append("You did ");
                     dbString.append(c.getString(c.getColumnIndex(COLUMN_COUNT)));
                     dbString.append(" pushup(s) on ");
-                    dbString.append(c.getString(c.getColumnIndex(COLUMN_DATE)));
+                    dbString.append(convertDate(c.getString(c.getColumnIndex(COLUMN_DATE)), "dd/MM/yyyy hh:mm:ss"));
                     dbString.append("\n");
                 }
                 c.moveToNext();
