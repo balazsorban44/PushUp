@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">PushUp</string>
+    <string name="title_progress">Progress</string>
+    <string name="title_home">Home</string>
+    <string name="title_settings">Settings</string>
+    <string name="current_pushup">0</string>
+    <string name="cancel_session">Cancel session</string>
+    <string name="save_progress">Save progress</string>
+    <string name="delete_sessions">Delete sessions</string>
+    <string name="show_sessions">Show sessions</string>
+    <string name="sessions">Sessions</string>
+    <string name="some_text">Text 0:</string>
+    <string name="my_text">Text 1:</string>
+    <string name="your_text">Text 2:</string>
+    <string name="synchronize_to_google_fit">Synchronize to Google Fit</string>
+    <string name="connect">Connect</string>
+    <string name="author_info">version 1.0 - by Balázs Orbán info@balazsorban.com</string>
+
+</resources>
