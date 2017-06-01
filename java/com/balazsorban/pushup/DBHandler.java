@@ -17,7 +17,8 @@ public class DBHandler extends SQLiteOpenHelper {
             TABLE_NAME = "PushUps",
             COLUMN_ID = "_id",
             COLUMN_COUNT = "COUNT",
-            COLUMN_DATE = "DATE";
+            COLUMN_DATE = "DATE",
+            COLUMN_DURATION = "DURATION";
 
     public static String convertDate(String dateInMilliseconds,String dateFormat) {
         return DateFormat.format(dateFormat, Long.parseLong(dateInMilliseconds)).toString();
@@ -33,7 +34,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 TABLE_NAME +"( " +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_COUNT + " INTEGER, " +
-                COLUMN_DATE + " INTEGER)";
+                COLUMN_DATE + " INTEGER, " +
+                COLUMN_DURATION + " INTEGER)";
         db.execSQL(query);
     }
 
@@ -47,6 +49,7 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_COUNT, session.get_pushups());
         values.put(COLUMN_DATE, session.get_date());
+        values.put(COLUMN_DURATION, session.get_duration());
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_NAME, null, values);
         db.close();
@@ -74,8 +77,10 @@ public class DBHandler extends SQLiteOpenHelper {
                     dbString.append("You did ");
                     dbString.append(c.getString(c.getColumnIndex(COLUMN_COUNT)));
                     dbString.append(" pushup(s) on ");
-                    dbString.append(convertDate(c.getString(c.getColumnIndex(COLUMN_DATE)), "dd/MM/yyyy hh:mm:ss"));
-                    dbString.append("\n");
+                    dbString.append(convertDate(c.getString(c.getColumnIndex(COLUMN_DATE)), "yyyy MMM dd @ HH:mm:ss, "));
+                    dbString.append("\nand it took you ");
+                    dbString.append(c.getString(c.getColumnIndex(COLUMN_DURATION)));
+                    dbString.append(" seconds.\n\n");
                 }
                 c.moveToNext();
             }
